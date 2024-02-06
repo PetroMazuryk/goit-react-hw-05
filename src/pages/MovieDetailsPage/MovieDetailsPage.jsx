@@ -1,13 +1,16 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { NavLink, useParams, useLocation } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 import { getMovieDetailsById } from '../../services/themoviedb.api';
 import imgDefault from '../../imgDefault.jpg';
+import { ImArrowLeft } from 'react-icons/im';
 import css from './MovieDetailsPage.module.css';
 
 export const MovieDetailsPage = () => {
   const [movieInfo, setMovieInfo] = useState({});
   const { movieId } = useParams();
+  const location = useLocation();
+  const goBackHref = useRef(location.state?.from || '/');
 
   useEffect(() => {
     try {
@@ -24,6 +27,13 @@ export const MovieDetailsPage = () => {
 
   return (
     <>
+      <NavLink className={css.navLink} to={goBackHref.current}>
+        <span className={css.textArrow}>
+          <ImArrowLeft />
+        </span>
+        Go back
+      </NavLink>
+
       {!isEmpty(movieInfo) && (
         <div className={css.infoWrapper}>
           <div className={css.textWrapper}>

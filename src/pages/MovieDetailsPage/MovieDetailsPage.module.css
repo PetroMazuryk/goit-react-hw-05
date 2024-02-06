@@ -1,14 +1,18 @@
 .infoWrapper {
   display: flex;
   justify-content: center;
-  max-width: 1200px;
+  gap: 20px;
+  max-width: 1000px;
   padding: 10px;
-  margin: 10px auto 20px;
+  margin: 20px auto;
+  outline: 1px solid red;
+  box-shadow: -6px -6px 9px #fff, 11px 11px 21px -8px #000;
+  border-radius: 8px;
 }
 
 .textWrapper {
   width: 600px;
-  padding: 0 50px;
+
   color: rgb(107, 37, 73);
 }
 
@@ -19,4 +23,32 @@
 .text {
   font-size: 24px;
   margin: 16px 0;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 454px 20px;
+
+  font-size: 22px;
+  background-color: #6a79d1;
+  box-shadow: 0 0 10px rgb(162, 57, 59);
+  color: red;
+  font-weight: 600;
+  width: 160px;
+  padding: 8px 20px;
+  border-radius: 12px;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 6px #0539aa, 0 0 6px #0539aa;
+  }
+}
+.textArrow {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
 }
