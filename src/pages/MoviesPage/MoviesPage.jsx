@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -11,6 +12,7 @@ import css from './MoviesPage.module.css';
 export const MoviesPage = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useSearchParams();
+
   const query = searchQuery.get('query') ?? '';
 
   const handleFormSubmit = inputName => {

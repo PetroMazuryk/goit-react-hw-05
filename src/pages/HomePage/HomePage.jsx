@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { getTrendMovies } from '../../services/themoviedb.api';
 
@@ -8,6 +9,7 @@ import css from './HomePage.module.css';
 
 export const HomePage = () => {
   const [trendMovies, setTrendmovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     try {
@@ -37,18 +39,20 @@ export const HomePage = () => {
               };
               return (
                 <li className={css.item} key={id}>
-                  <div className={css.thumb}>
-                    <img
-                      className={css.img}
-                      src={
-                        !poster_path
-                          ? imgDefault
-                          : `https://image.tmdb.org/t/p/w500/${poster_path}`
-                      }
-                      alt={title}
-                      width="360"
-                    />
-                  </div>
+                  <Link to={`movies/${id}`} state={{ from: location }}>
+                    <div className={css.thumb}>
+                      <img
+                        className={css.img}
+                        src={
+                          !poster_path
+                            ? imgDefault
+                            : `https://image.tmdb.org/t/p/w500/${poster_path}`
+                        }
+                        alt={title}
+                        width="360"
+                      />
+                    </div>
+                  </Link>
                   <div className={css.titleWrapper}>
                     <h3 className={css.titleImg}>{title}</h3>
                   </div>

@@ -16,7 +16,16 @@ export const getTrendMovies = async () => {
   return response.data;
 };
 
+// Пошук фільму за ключовим словом на сторінці фільмів.
 export const getMovieByName = async movieName => {
   const response = await axios.get(`/search/movie?query=${movieName}`, params);
   return response.data;
 };
+
+//запит повної інформації про фільм для сторінки кінофільму.
+export const getMovieDetailsById = async movieId => {
+  const response = await axios.get(`movie/${movieId}`, params);
+  return response.data;
+};
+
+//https://api.themoviedb.org/3/movie/movie_id?language=en-US'
