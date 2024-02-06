@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import clsx from 'clsx';
 import { getTrendMovies } from '../../services/themoviedb.api';
 
 import imgDefault from '../../imgDefault.jpg';
@@ -26,6 +26,15 @@ export const HomePage = () => {
           <h2 className={css.title}>Trending films today</h2>
           <ul className={css.list}>
             {trendMovies.map(({ poster_path, title, id, vote_average }) => {
+              const getClassByVote = vote_average => {
+                if (vote_average >= 7.5) {
+                  return clsx(css.titleVote, css.green);
+                } else if (vote_average > 6) {
+                  return clsx(css.titleVote, css.orange);
+                } else {
+                  return clsx(css.titleVote, css.red);
+                }
+              };
               return (
                 <li className={css.item} key={id}>
                   <div className={css.thumb}>
@@ -44,7 +53,7 @@ export const HomePage = () => {
                     <h3 className={css.titleImg}>{title}</h3>
                   </div>
                   {!vote_average ? null : (
-                    <div className={css.titleVote}>
+                    <div className={getClassByVote(vote_average)}>
                       {vote_average.toFixed(1)}
                     </div>
                   )}

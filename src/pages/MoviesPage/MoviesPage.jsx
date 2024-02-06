@@ -1,5 +1,5 @@
+import clsx from 'clsx';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
-
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getMovieByName } from '../../services/themoviedb.api';
@@ -49,6 +49,15 @@ export const MoviesPage = () => {
 
       <ul className={css.list}>
         {searchMovies.map(({ id, poster_path, title, vote_average }) => {
+          const getClassByVote = vote_average => {
+            if (vote_average >= 7.5) {
+              return clsx(css.titleVote, css.green);
+            } else if (vote_average > 6) {
+              return clsx(css.titleVote, css.orange);
+            } else {
+              return clsx(css.titleVote, css.red);
+            }
+          };
           return (
             <li className={css.item} key={id}>
               <div className={css.thumb}>
@@ -69,7 +78,9 @@ export const MoviesPage = () => {
                 <h3 className={css.titleImg}>{title}</h3>
               </div>
               {!vote_average ? null : (
-                <div className={css.titleVote}>{vote_average.toFixed(1)}</div>
+                <div className={getClassByVote(vote_average)}>
+                  {vote_average.toFixed(1)}
+                </div>
               )}
             </li>
           );
