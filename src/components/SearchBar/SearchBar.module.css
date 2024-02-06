@@ -1,0 +1,39 @@
+.wrapper {
+  padding: 12px 24px 12px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.input {
+  display: inline-block;
+  width: 100%;
+  font: inherit;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding: 10px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  margin-left: 6px;
+}
+
+.icon:hover {
+  color: green;
+}
