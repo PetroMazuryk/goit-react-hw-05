@@ -68,7 +68,9 @@ export const MoviesPage = () => {
               <div className={css.titleWrapper}>
                 <h3 className={css.titleImg}>{title}</h3>
               </div>
-              <div className={css.titleVote}>{vote_average.toFixed(1)}</div>
+              {!vote_average ? null : (
+                <div className={css.titleVote}>{vote_average.toFixed(1)}</div>
+              )}
             </li>
           );
         })}
