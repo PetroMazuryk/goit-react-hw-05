@@ -1,0 +1,20 @@
+.title {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  font-size: 28px;
+  margin: 8px auto;
+  background-color: rgb(184, 187, 187);
+  border: none;
+  border-radius: 10px;
+
+  padding: 4px 12px;
+  max-width: 600px;
+  color: brown;
+  background: #fffbd5;
+  background: -webkit-linear-gradient(to right, #eb5757, #000000);
+  background: linear-gradient(to right, #eb5757, #000000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
