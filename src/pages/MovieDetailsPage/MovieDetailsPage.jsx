@@ -56,7 +56,13 @@ export const MovieDetailsPage = () => {
             </p>
 
             <p className={css.text}>
-              <b>Overview: </b> {overview}
+              <b>Overview: </b>
+
+              {overview ? (
+                <span>{overview}</span>
+              ) : (
+                'There is no information about overwiw.'
+              )}
             </p>
 
             <p className={css.text}>
@@ -66,15 +72,18 @@ export const MovieDetailsPage = () => {
                 : 'There is no information about genres.'}
             </p>
           </div>
-          <img
-            src={
-              !poster_path
-                ? imgDefault
-                : `https://image.tmdb.org/t/p/w500/${poster_path}`
-            }
-            alt={title}
-            width="360"
-          />
+          <div className={css.thumb}>
+            <img
+              className={css.img}
+              src={
+                !poster_path
+                  ? imgDefault
+                  : `https://image.tmdb.org/t/p/w500/${poster_path}`
+              }
+              alt={title}
+              width="360"
+            />
+          </div>
         </div>
       )}
     </>

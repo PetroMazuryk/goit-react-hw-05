@@ -21,6 +21,16 @@ export const HomePage = () => {
     }
   }, []);
 
+  const getClassByVote = vote_average => {
+    if (vote_average >= 7.5) {
+      return clsx(css.titleVote, css.green);
+    } else if (vote_average > 6) {
+      return clsx(css.titleVote, css.orange);
+    } else {
+      return clsx(css.titleVote, css.red);
+    }
+  };
+
   return (
     <>
       {trendMovies.length > 0 && (
@@ -28,15 +38,6 @@ export const HomePage = () => {
           <h2 className={css.title}>Trending films today</h2>
           <ul className={css.list}>
             {trendMovies.map(({ poster_path, title, id, vote_average }) => {
-              const getClassByVote = vote_average => {
-                if (vote_average >= 7.5) {
-                  return clsx(css.titleVote, css.green);
-                } else if (vote_average > 6) {
-                  return clsx(css.titleVote, css.orange);
-                } else {
-                  return clsx(css.titleVote, css.red);
-                }
-              };
               return (
                 <li className={css.item} key={id}>
                   <Link to={`movies/${id}`} state={{ from: location }}>

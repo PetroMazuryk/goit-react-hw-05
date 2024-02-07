@@ -47,6 +47,22 @@
     box-shadow: 0 0 6px #0539aa, 0 0 6px #0539aa;
   }
 }
+
+.thumb {
+  width: 344px;
+  height: 540px;
+  border: 2px solid green;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .textArrow {
   display: flex;
   align-items: center;
