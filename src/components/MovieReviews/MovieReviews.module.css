@@ -1,0 +1,26 @@
+.list {
+  max-width: 1000px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgb(107, 37, 73);
+  :not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+.item {
+  font-size: 18px;
+  padding: 6px;
+  outline: 1px solid green;
+  box-shadow: 0 0 10px rgb(162, 57, 59);
+  border-radius: 10px;
+  :not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.author {
+  display: block;
+  text-align: center;
+}
