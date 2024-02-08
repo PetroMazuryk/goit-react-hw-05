@@ -5,21 +5,35 @@ import { TitlePage } from '../../components/TitlePage/TitlePage';
 
 export default function HomePage() {
   const [trendMovies, setTrendmovies] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    try {
-      getTrendMovies().then(response => {
-        setTrendmovies([...response.results]);
-      });
-    } catch (error) {
-      console.log(error);
+    const controller = new AbortController();
+    async function fetchData() {
+      try {
+        const fetchMovies = await getTrendMovies({
+          abortController: controller,
+        });
+        setTrendmovies(fetchMovies.results);
+      } catch (error) {
+        if (error.code !== 'ERR_CANCELED') {
+          setError(true);
+        }
+      }
     }
+    fetchData();
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
     <>
-      <TitlePage text="Trending films today" />
-      <MoviesList movies={trendMovies} />;
+      {error && (
+        <div>Whoops, something went wrong! Please try reloading this page!</div>
+      )}
+      {trendMovies.length > 0 && <TitlePage text="Trending films today" />}
+      {trendMovies.length > 0 && <MoviesList movies={trendMovies} />};
     </>
   );
 }

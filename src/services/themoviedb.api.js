@@ -11,8 +11,10 @@ const params = {
 };
 
 //список найпопулярніших фільмів на сьогодні для створення колекції на головній сторінці.
-export const getTrendMovies = async () => {
-  const response = await axios.get(`trending/movie/day`, params);
+export const getTrendMovies = async ({ abortController }) => {
+  const response = await axios.get(`trending/movie/day`, params, {
+    signal: abortController.signal,
+  });
   return response.data;
 };
 
