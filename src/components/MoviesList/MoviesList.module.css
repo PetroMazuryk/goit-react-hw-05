@@ -25,6 +25,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+
   max-width: calc(100vw - 260px);
   margin: 10px auto 0;
 }
@@ -68,6 +69,7 @@
 }
 .titleImg {
   font-size: 18px;
+  color: var(--text-color);
 }
 
 .titleVote {
