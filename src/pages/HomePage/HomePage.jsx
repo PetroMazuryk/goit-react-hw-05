@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getTrendMovies } from '../../services/themoviedb.api';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
 import { TitlePage } from '../../components/TitlePage/TitlePage';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 
 export default function HomePage() {
   const [trendMovies, setTrendmovies] = useState([]);
@@ -29,9 +30,7 @@ export default function HomePage() {
 
   return (
     <>
-      {error && (
-        <div>Whoops, something went wrong! Please try reloading this page!</div>
-      )}
+      {error && <ErrorMessage />}
       {trendMovies.length > 0 && <TitlePage text="Trending films today" />}
       {trendMovies.length > 0 && <MoviesList movies={trendMovies} />};
     </>
