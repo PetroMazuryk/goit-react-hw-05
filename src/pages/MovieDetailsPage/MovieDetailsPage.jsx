@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
-import { NavLink, useParams, useLocation } from 'react-router-dom';
+import clsx from 'clsx';
+import { useState, useEffect, useRef, Suspense } from 'react';
+import { NavLink, useParams, useLocation, Outlet } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 import { getMovieDetailsById } from '../../services/themoviedb.api';
 import imgDefault from '../../imgDefault.jpg';
 import { ImArrowLeft } from 'react-icons/im';
+import { TitlePage } from '../../components/TitlePage/TitlePage';
 import css from './MovieDetailsPage.module.css';
 
 export const MovieDetailsPage = () => {
@@ -25,6 +27,9 @@ export const MovieDetailsPage = () => {
   const { poster_path, title, release_date, vote_average, overview, genres } =
     movieInfo;
 
+  const navLink = ({ isActive }) => {
+    return clsx(css.link, isActive && css.active);
+  };
   return (
     <>
       <NavLink className={css.navLink} to={goBackHref.current}>
@@ -61,7 +66,7 @@ export const MovieDetailsPage = () => {
               {overview ? (
                 <span>{overview}</span>
               ) : (
-                'There is no information about overwiw.'
+                'There is no information about overwiew.'
               )}
             </p>
 
@@ -86,6 +91,25 @@ export const MovieDetailsPage = () => {
           </div>
         </div>
       )}
+      <div>
+        <TitlePage text="Additional information" />
+        <ul className={css.list}>
+          <li className={css.item}>
+            <NavLink className={navLink} to="cast">
+              MovieCast
+            </NavLink>
+          </li>
+
+          <li className={css.item}>
+            <NavLink className={navLink} to="reviews">
+              MovieReviews
+            </NavLink>
+          </li>
+        </ul>
+        <Suspense fallback={<div>LOADING...</div>}>
+          <Outlet />
+        </Suspense>
+      </div>
     </>
   );
 };

@@ -68,3 +68,33 @@
   align-items: center;
   margin-right: 16px;
 }
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  font-size: 22px;
+  font-weight: 800;
+  font-weight: 500;
+  /* margin-left: 22px; */
+  padding: 4px 10px;
+  border-radius: 8px;
+  color: rgb(32, 31, 31);
+  box-shadow: 0 0 10px rgb(162, 57, 59);
+  &:hover {
+    box-shadow: 0 0 10px #0539aa, 0 0 20px #0539aa;
+  }
+}
+
+.active {
+  color: rgb(209, 195, 195);
+  background-color: rgb(162, 57, 59);
+}

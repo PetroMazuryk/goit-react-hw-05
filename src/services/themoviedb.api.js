@@ -23,9 +23,16 @@ export const getMovieByName = async movieName => {
 };
 
 //запит повної інформації про фільм для сторінки кінофільму.
+//'https://api.themoviedb.org/3/movie/movie_id?language=en-US' \
 export const getMovieDetailsById = async movieId => {
   const response = await axios.get(`movie/${movieId}`, params);
   return response.data;
 };
 
-//https://api.themoviedb.org/3/movie/movie_id?language=en-US'
+// запит інформації про акторський склад для сторінки кінофільму.
+//api.themoviedb.org/3/movie/movie_id/credits?language=en-US'
+export const getMovieCreditsById = async movieId => {
+  const response = await axios.get(`movie/${movieId}/credits`, params);
+  console.log(response);
+  return response.data;
+};

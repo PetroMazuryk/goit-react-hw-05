@@ -1,0 +1,30 @@
+.list {
+  width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 30px auto;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  outline: 1px solid green;
+  box-shadow: 0 0 10px rgb(162, 57, 59);
+}
+
+.img {
+  width: 200px;
+  height: 300px;
+}
+
+.text {
+  font-size: 16px;
+  color: rgb(31, 18, 18);
+  padding-top: 8px;
+}
