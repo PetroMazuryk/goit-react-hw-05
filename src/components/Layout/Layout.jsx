@@ -1,9 +1,10 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { SiThemoviedatabase } from 'react-icons/si';
 import clsx from 'clsx';
 import css from './Layout.module.css';
 
-export const Layout = () => {
+export default function Layout() {
   const navLink = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
   };
@@ -27,7 +28,9 @@ export const Layout = () => {
         </header>
       </div>
 
-      <Outlet />
+      <Suspense fallback={<div>LOADING...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
-};
+}

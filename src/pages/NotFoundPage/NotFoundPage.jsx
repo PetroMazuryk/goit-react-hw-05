@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ImArrowLeft } from 'react-icons/im';
+
 import css from './NotFoundPage.module.css';
 
 export default function NotFoundPage() {
@@ -7,7 +8,7 @@ export default function NotFoundPage() {
     <div>
       <h1 className={css.text}>
         {' '}
-        Woops, sorry, but this page does not exist. Go to the main page!{' '}
+        Woops! Sorry, but this page does not exist. Go to the main page!{' '}
       </h1>
 
       <Link className={css.navLink} to="/">

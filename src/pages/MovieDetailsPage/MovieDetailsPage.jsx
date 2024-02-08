@@ -8,7 +8,7 @@ import { ImArrowLeft } from 'react-icons/im';
 import { TitlePage } from '../../components/TitlePage/TitlePage';
 import css from './MovieDetailsPage.module.css';
 
-export const MovieDetailsPage = () => {
+export default function MovieDetailsPage() {
   const [movieInfo, setMovieInfo] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
@@ -112,4 +112,4 @@ export const MovieDetailsPage = () => {
       </div>
     </>
   );
-};
+}

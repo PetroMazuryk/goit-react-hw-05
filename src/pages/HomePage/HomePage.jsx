@@ -3,7 +3,7 @@ import { getTrendMovies } from '../../services/themoviedb.api';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
 import { TitlePage } from '../../components/TitlePage/TitlePage';
 
-export const HomePage = () => {
+export default function HomePage() {
   const [trendMovies, setTrendmovies] = useState([]);
 
   useEffect(() => {
@@ -22,4 +22,4 @@ export const HomePage = () => {
       <MoviesList movies={trendMovies} />;
     </>
   );
-};
+}

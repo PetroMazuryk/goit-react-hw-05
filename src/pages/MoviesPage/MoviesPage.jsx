@@ -5,7 +5,7 @@ import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
 import css from './MoviesPage.module.css';
 
-export const MoviesPage = () => {
+export default function MoviesPage() {
   const [searchMovies, setSearchMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useSearchParams();
 
@@ -48,4 +48,4 @@ export const MoviesPage = () => {
       <MoviesList movies={searchMovies} />
     </>
   );
-};
+}

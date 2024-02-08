@@ -4,7 +4,7 @@ import { getMovieReviewsById } from '../../services/themoviedb.api';
 import { TitlePage } from '../../components/TitlePage/TitlePage';
 import css from './MovieReviews.module.css';
 
-export const MovieReviews = () => {
+export default function MovieReviews() {
   const [movieReviews, setMovieReviews] = useState([]);
   const { movieId } = useParams();
 
@@ -35,4 +35,4 @@ export const MovieReviews = () => {
       )}
     </>
   );
-};
+}

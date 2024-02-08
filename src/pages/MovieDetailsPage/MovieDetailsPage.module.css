@@ -5,6 +5,7 @@
   max-width: 1000px;
   padding: 10px;
   margin: 20px auto;
+  color: var(--text-color);
   outline: 1px solid red;
   box-shadow: -6px -6px 9px #fff, 11px 11px 21px -8px #000;
   border-radius: 8px;

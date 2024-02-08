@@ -40,6 +40,5 @@ export const getMovieCreditsById = async movieId => {
 // https://api.themoviedb.org/3/movie/movie_id/reviews?language=en-US&page=1'
 export const getMovieReviewsById = async movieId => {
   const response = await axios.get(`movie/${movieId}/reviews`, params);
-  console.log(response);
   return response.data;
 };
