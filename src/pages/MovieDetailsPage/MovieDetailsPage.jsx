@@ -4,9 +4,9 @@ import { NavLink, useParams, useLocation, Outlet } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 import { getMovieDetailsById } from '../../services/themoviedb.api';
 import imgDefault from '../../imgDefault.jpg';
-import { ImArrowLeft } from 'react-icons/im';
 import { TitlePage } from '../../components/TitlePage/TitlePage';
 import css from './MovieDetailsPage.module.css';
+import { BackLink } from '../../components/BackLink/BackLink';
 
 export default function MovieDetailsPage() {
   const [movieInfo, setMovieInfo] = useState({});
@@ -32,12 +32,7 @@ export default function MovieDetailsPage() {
   };
   return (
     <>
-      <NavLink className={css.navLink} to={goBackHref.current}>
-        <span className={css.textArrow}>
-          <ImArrowLeft />
-        </span>
-        Go back
-      </NavLink>
+      <BackLink href={goBackHref.current}>Go back</BackLink>
 
       {!isEmpty(movieInfo) && (
         <div className={css.infoWrapper}>
