@@ -1,4 +1,4 @@
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { useState } from 'react';
 import css from './SearchBar.module.css';
 import { MdOutlineScreenSearchDesktop } from 'react-icons/md';
@@ -10,15 +10,16 @@ export const SearchBar = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
+    console.log(inputName.trim() === '');
     if (inputName.trim() === '') {
-      toast.warn('Search query can`t be empty!!!');
+      console.log(inputName.trim() === '');
+      toast.error('Search query can`t be empty!!!');
       return;
     }
 
     onSubmit(inputName);
 
-    setInputName('');
+    event.target.reset();
   };
 
   return (
@@ -35,6 +36,7 @@ export const SearchBar = ({ onSubmit }) => {
           placeholder="Search images and photos"
         />
       </form>
+      <Toaster position="top-center" />
     </div>
   );
 };

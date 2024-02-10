@@ -7,20 +7,25 @@ import imgDefault from '../../imgDefault.jpg';
 import { TitlePage } from '../../components/TitlePage/TitlePage';
 import css from './MovieDetailsPage.module.css';
 import { BackLink } from '../../components/BackLink/BackLink';
+import { Loader } from '../../components/Loader/Loader';
 
 export default function MovieDetailsPage() {
   const [movieInfo, setMovieInfo] = useState({});
+  const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
   const location = useLocation();
   const goBackHref = useRef(location.state?.from || '/');
 
   useEffect(() => {
     try {
+      setLoading(true);
       getMovieDetailsById(movieId).then(response => {
         setMovieInfo(response);
       });
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }, [movieId]);
 
@@ -32,6 +37,7 @@ export default function MovieDetailsPage() {
   };
   return (
     <>
+      {loading && <Loader />}
       <BackLink href={goBackHref.current}>Go back</BackLink>
 
       {!isEmpty(movieInfo) && (
@@ -101,7 +107,7 @@ export default function MovieDetailsPage() {
             </NavLink>
           </li>
         </ul>
-        <Suspense fallback={<div>LOADING...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </div>
