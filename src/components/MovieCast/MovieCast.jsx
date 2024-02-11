@@ -12,7 +12,7 @@ export default function MovieCast() {
   useEffect(() => {
     try {
       getMovieCreditsById(movieId).then(response => {
-        setMovieCast(response.cast.splice(0, 10));
+        setMovieCast(response.cast);
       });
     } catch (error) {
       console.log(error);

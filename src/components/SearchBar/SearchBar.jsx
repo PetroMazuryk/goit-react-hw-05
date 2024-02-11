@@ -10,9 +10,8 @@ export const SearchBar = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(inputName.trim() === '');
+
     if (inputName.trim() === '') {
-      console.log(inputName.trim() === '');
       toast.error('Search query can`t be empty!!!');
       return;
     }
